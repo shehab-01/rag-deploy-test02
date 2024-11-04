@@ -1,0 +1,56 @@
+{
+  // vscode 설정
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.formatOnPaste": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "never",
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[vue]": {
+    "editor.inlayHints.enabled": "off",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+
+  // JS, TS 에서 데코레이터 사용여부
+  "js/ts.implicitProjectConfig.experimentalDecorators": true,
+
+  // eslint
+  // "eslint.format.enable": true,
+  "eslint.run": "onSave",
+  "eslint.alwaysShowStatus": true,
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "eslint.validate": ["javascript", "typescript", "vue", "vue-html", "html"],
+
+  // prettier,
+  "prettier.enable": true,
+  "prettier.useTabs": true
+
+  // --
+  // "editor.acceptSuggestionOnCommitCharacter": false,
+  // "workbench.settings.openDefaultKeybindings": true,
+}

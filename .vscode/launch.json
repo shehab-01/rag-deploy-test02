@@ -1,0 +1,30 @@
+{
+  // uvicorn main:app --reload --log-config log.yaml
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: FastAPI debug",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "cwd": "${workspaceFolder}/Source/backend",
+      "env": {
+        "APP_ENV": "local"
+      },
+      "args": [
+        "main:app",
+        "--reload",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "9090",
+        "--log-config",
+        "log.yaml"
+      ],
+      // "console": "internalConsole",
+      // "console": "externalTerminal",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    }
+  ]
+}

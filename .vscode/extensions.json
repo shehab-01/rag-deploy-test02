@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "vscode-icons-team.vscode-icons",
+    "ms-python.vscode-pylance",
+    "ms-python.black-formatter"
+  ]
+}

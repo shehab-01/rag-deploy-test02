@@ -1,0 +1,60 @@
+{
+  // 포맷설정
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.formatOnPaste": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.defaultFormatter": null,
+
+  // ---
+  // "python.pythonPath": "./Script/python",
+  // "python.defaultInterpreterPath": "${workspaceFolder}/Scripts/python",
+  // "python.terminal.activateEnvironment": true,
+  "code-runner.executorMap": {
+    "python": "$pythonPath $fullFileName"
+  },
+
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+
+  // ---
+  // https://code.visualstudio.com/docs/editor/variables-reference
+  // vscode 버전 올라가면서 작동안함.
+  // 패지키 설치는 필요없고, 인터프리터만 글로벌 python 경로로 잡아주면 다시 동작..
+  "black-formatter.interpreter": [
+    // "${workspaceFolder}/Scripts/python"
+    "${userHome}/AppData/Local/Programs/Python/Python311/python"
+  ],
+  // "black-formatter.path": [
+  //   "${workspaceFolder}/Scripts/black"
+  // ],
+  "black-formatter.args": [
+    "--line-length=150",
+    "--skip-magic-trailing-comma",
+    // "--exclude=/(.git|.venv|build|dist)/",
+    "--force-exclude=/(.git|.venv|build|dist)/"
+  ],
+
+  // 검색설정
+  "explorer.autoRevealExclude": {
+    "**/Lib": true,
+    "**/Script": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // Git 레파지토리 설정
+  "git.scanRepositories": ["./Source/backend"],
+  "git.ignoredRepositories": ["./Source/frontend"]
+}

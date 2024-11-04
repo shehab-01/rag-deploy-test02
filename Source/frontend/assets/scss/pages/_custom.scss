@@ -1,0 +1,215 @@
+/* 로딩표시 */
+.loading {
+  /* z-index: auto; */
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  .loader {
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    /* margin: auto; */
+    margin-top: -50px;
+    position: absolute;
+    border-radius: 50%;
+    border: 8px solid #eaf0f6;
+    border-top: 8px solid dimgray;
+    animation: spinner 3s linear infinite;
+  }
+  @keyframes spinner {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+/* 검색영역 */
+section.search {
+  width: 100%;
+  // min-height: 5rem;
+  background-color: #bce0be;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  padding: 10px !important;
+
+  .v-label {
+    min-width: 5%;
+    font-size: 1rem;
+    font-weight: 600 !important;
+    margin-right: 8px !important;
+  }
+
+  .v-text-field {
+    max-width: 20rem;
+    background-color: white;
+    border-radius: 5px;
+    height: 34px;
+  }
+
+  .v-btn {
+    color: #ffffff;
+    border: 1px solid white;
+    background-color: #598958;
+  }
+
+  .v-btn-group {
+    height: 32px;
+
+    .v-btn {
+      border: 1px solid white;
+    }
+  }
+}
+
+/* 버튼영역 */
+section.button {
+  gap: 8px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 !important;
+  margin: 5px 0;
+}
+
+/* 그리드영역 */
+section.grid {
+  padding: 0 !important;
+}
+
+/* 테이블영역 */
+section.table {
+  .info {
+    width: 100%;
+    margin-top: 1rem;
+    border-collapse: collapse;
+
+    tbody {
+      th {
+        width: 15%;
+        border: 1px solid #dddddd;
+        background-color: #f9f9f9;
+        font-weight: bold;
+      }
+
+      td {
+        height: 3rem;
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+    }
+  }
+}
+
+/* 모달영역 */
+section.modal {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 500px;
+  overflow-y: auto;
+  padding: 5px;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #598958;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+}
+
+section.smallModal {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 300px;
+  overflow-y: auto;
+  padding: 5px;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #598958;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+}
+
+/* 파일영역 */
+section.file-view {
+  padding: 10px;
+  margin-top: 10px;
+  text-align: left;
+  border-radius: 5px;
+  border: 1px solid #dddddd;
+  background-color: white;
+
+  ul {
+    list-style: none;
+    padding-left: 0px;
+  }
+}
+
+/* 텍스트영역 */
+section.info-text {
+  padding: 10px;
+  margin-top: 10px;
+  text-align: left;
+  background-color: #e7ece3;
+}
+
+section.card-main {
+  min-height: 20rem;
+  height: auto;
+  border: 1px solid #929292;
+}
+
+/* 푸터 영역 */
+section.footer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+/* 버튼 */
+.cancle-button {
+  height: 2.5rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #598958;
+  border-radius: 10px;
+  color: black;
+}
+
+.success-button {
+  height: 2.5rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #598958;
+  border: 1px solid #598958;
+  border-radius: 10px;
+  color: white;
+}

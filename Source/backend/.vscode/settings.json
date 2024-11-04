@@ -1,0 +1,22 @@
+{
+	// 포맷설정
+	"editor.formatOnSave": true,
+	"python.linting.enabled": true,
+	// "python.linting.lintOnSave": true,
+	// "python.linting.flake8Enabled": true,
+	// "python.linting.pylintEnabled": false,
+	// "python.linting.flake8Args": ["--max-line-length=150", "--ignore=F401,E402"],
+	// "python.formatting.blackArgs": ["--line-length", "150"],
+	// "python.formatting.blackPath": "",
+	// "python.formatting.provider": "black",
+	"[python]": {
+    "editor.defaultFormatter": null,
+		"editor.formatOnSave": true,
+		"editor.formatOnType": true,
+		"editor.formatOnPaste": true,
+    "editor.tabSize": 4
+	},
+
+	// 검색설정
+	"explorer.autoRevealExclude": {}
+}

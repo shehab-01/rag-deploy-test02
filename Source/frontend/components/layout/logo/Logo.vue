@@ -1,0 +1,4 @@
+<template>
+  <!-- <LayoutLogoDark /> -->
+  <LayoutLogoRnd />
+</template>

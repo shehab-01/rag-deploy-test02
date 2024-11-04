@@ -1,0 +1,27 @@
+// @forward 'vuetify/settings' with (
+//   $utilities: (),
+//   $font-size-root: 1rem
+// );
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200..900&display=swap');
+@import './variables';
+@import 'vuetify/styles/main.sass';
+@import './override';
+@import './layout/container';
+@import './layout/sidebar';
+@import './layout/topbar';
+@import './components/VButtons';
+@import './components/VCard';
+@import './components/VField';
+@import './components/VInput';
+@import './components/VNavigationDrawer';
+@import './components/VShadow';
+@import './components/VTextField';
+@import './components/VGrid';
+@import './pages/dashboards';
+@import './pages/auth';
+@import './pages/custom';
+@import './pages/organization';
+@import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css';

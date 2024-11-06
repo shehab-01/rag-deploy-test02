@@ -5,7 +5,6 @@ from psycopg2 import pool
 from psycopg2.extensions import connection, cursor
 from typing import Generator, Union
 from contextlib import contextmanager
-import faiss
 import pickle
 import io
 import numpy as np
@@ -15,8 +14,6 @@ from typing import List
 from api.utils.logger import logger
 from api.common import exceptions as ex
 from api.common.settings import settings
-from api.rag.nlu import process_query_nlu
-from api.rag.embedding import get_embedding_function
 
 
 class DBHelper:
@@ -173,41 +170,6 @@ class DBHelper:
 
 
 db_helper = DBHelper()
-
-
-async def process_query(query_text: str, selected_path: str, question_language: str):
-    nlu_result = process_query_nlu(query_text, question_language)
-    query_language = nlu_result["language"]
-
-    # Load merged FAISS index and metadata from PostgreSQL for the selected path
-    index, metadata = db_helper.load_merged_faiss_from_postgres(selected_path)
-
-    # Get document language from metadata (assuming all files have the same language)
-    document_language = metadata[0]["language"]
-    embedding_function = get_embedding_function(document_language)
-
-    # Perform similarity search across all files in the selected path
-    query_vector = embedding_function.embed_query(query_text)
-    D, I = index.search(np.array([query_vector]), k=20)  # Adjust k as needed
-
-    # Get the relevant documents from all files in the selected path
-    relevant_docs = [Document(page_content="", metadata=metadata[i]) for i in I[0]]
-
-    # Here you would typically process these relevant documents to generate an answer
-    # For this example, we'll just return the top 3 most relevant document metadata
-    top_results = relevant_docs[:3]
-
-    result = {
-        "query": query_text,
-        "selected_path": selected_path,
-        "top_results": [
-            {"full_path": doc.metadata["full_path"], "page": doc.metadata.get("page", "N/A"), "similarity_score": float(D[0][i])}
-            for i, doc in enumerate(top_results)
-        ],
-        "nlu_info": nlu_result,
-    }
-
-    return result
 
 
 # @atexit.register

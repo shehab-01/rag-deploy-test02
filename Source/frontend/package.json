@@ -33,7 +33,7 @@
     "pdf-vue3": "^1.0.12",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.1",
-    "sass": "^1.76.0",
+    "sass": "1.77.6",
     "vue": "^3.4.26",
     "vue-pdf": "^4.3.0",
     "vue-pdf-app": "^2.1.0",

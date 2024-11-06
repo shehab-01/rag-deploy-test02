@@ -2,7 +2,7 @@
   <v-row>
     <!-- Side -->
     <v-col>
-      <v-card  elevation="10" class="withbg" height="75vh">
+      <v-card elevation="10" class="withbg" height="75vh">
         <v-card-item class="pa-0">
           <div class="d-sm-flex align-center justify-space-between">
             <!-- <v-card-title class="text-h6" style="line-height: 1.57">{{ props.title }}</v-card-title> -->
@@ -27,10 +27,10 @@
             </v-row> -->
             <v-row>
               <div class="chat-info" style="padding-left: 25px">
-                <h3>{{firstChat}}</h3>
+                <h3>{{ firstChat }}</h3>
                 <p class="mt-5">아이콘 얼음 정수기</p>
                 <p class="mt-2">📚🔍 내부지식 검색 답변 v3.0</p>
-                <p class="mt-2 mb-4">{{datetime}}</p>
+                <p class="mt-2 mb-4">{{ datetime }}</p>
               </div>
             </v-row>
           </v-card-text>
@@ -54,7 +54,7 @@
 
     <!-- Main Chat -->
     <v-col cols="9" md="9">
-      <v-card  elevation="10" class="withbg d-flex flex-column" height="75vh">
+      <v-card elevation="10" class="withbg d-flex flex-column" height="75vh">
         <v-card-item class="pa-0">
           <div class="d-sm-flex align-center justify-space-between">
             <h5 class="text-h5 mb-6 pl-7 pt-7">Main Chat</h5>
@@ -67,16 +67,14 @@
           <v-row>
             <v-col cols="12" class="pa-0">
               <!-- Chat messages will appear here -->
-              <div class="main-chat">
-                <div v-for="(message, index) in messages" :key="index" class="mb-2">
-                  <p v-if="message.type == 'Q'" class="pb-5"> <h4>{{ message.type }} : {{ message.content }}</h4></p>
-                  <p v-if="message.type == 'Ai'" class="pb-5"><span class="ai-response" >{{ message.type }} : </span>{{ message.content }}</p>
-
-                  <!-- <p class="ai-res">{{ message.content }}</p> -->
-                  <p v-if="message.source" class="">page: {{ message.source }}</p>
-
+              <div v-for="(message, index) in messages" :key="index" class="mb-2">
+                <!-- Replace nested h4 in p with proper structure -->
+                <div v-if="message.type == 'Q'" class="pb-5">
+                  <h4>{{ message.type }}: {{ message.content }}</h4>
                 </div>
-                <!-- <v-divider class="mt-5" /> -->
+                <p v-if="message.type == 'Ai'" class="pb-5">
+                  <span class="ai-response">{{ message.type }}: </span>{{ message.content }}
+                </p>
               </div>
             </v-col>
           </v-row>
@@ -138,8 +136,8 @@ const colorShadow = ref(['primary', 'secondary', 'info', 'success', 'warning', '
 const messages = ref([]);
 const newMessage = ref('');
 const chatContainer = ref(null);
-let firstChat: Ref<string> = ref('')
-let datetime : Ref<string> = ref('')
+let firstChat: Ref<string> = ref('');
+let datetime: Ref<string> = ref('');
 
 onMounted(() => {
   scrollToBottom();
@@ -163,7 +161,6 @@ function detectLanguage(text: string): string {
   return isEnglish(text) ? 'en' : 'ko';
 }
 
-
 const sendMessage = () => {
   if (newMessage.value.trim()) {
     // Add human message
@@ -174,8 +171,7 @@ const sendMessage = () => {
     console.log(messages.value.length);
     if (messages.value.length == 1) {
       firstChat.value = messages.value[0]['content'];
-      datetime.value = new Date().toLocaleString()
-      
+      datetime.value = new Date().toLocaleString();
     }
     api.search(detectedLanguage);
     // Simulate AI response
@@ -210,7 +206,7 @@ const api = reactive({
             // console.log(result['sources'][i]);
             let page = parseInt(result['sources'][i]['page']);
             let pageF: number = page + 1;
-            let pafeS : string = pageF.toString()
+            let pafeS: string = pageF.toString();
             sources = sources.concat(pafeS, ', ');
           }
         }
@@ -238,7 +234,7 @@ const api = reactive({
 .ai-res {
   font-size: 1.2em;
 }
-.ai-response{
+.ai-response {
   font-weight: bold;
 }
 

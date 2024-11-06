@@ -34,36 +34,28 @@ async def lifespan(app: FastAPI):
     await server_shutdown()
 
 
-app = FastAPI(
-    title="FastAPI",
-    description="FastAPI",
-    version="0.0.0",
-    terms_of_service="",
-    contact={
-        # "name": "맥스테드",
-        # "url": "https://maxted.kr",
-        # "email": "info@maxted.kr",
-    },
-    license_info={
-        # "name": "Apache 2.0",
-        # "url": "https://www.apache.org/licenses/LICENSE-2.0.html",
-    },
-)  # fmt: skip
+app = FastAPI(title="FastAPI", description="FastAPI", version="0.0.0", terms_of_service="", contact={}, license_info={})
 
 # CORS
 origins = [
-    "*",
-    "http://localhost", 
-    "http://localhost:8000", 
-    "http://localhost:9000", 
-]  # fmt: skip
+    "http://localhost:9000",  # Nuxt dev server
+    "http://112.217.168.243:9000",  # Your specific IP
+    "ws://112.217.168.243:9000",  # WebSocket connection
+    "ws://localhost:9000",  # Local WebSocket
+    "http://0.0.0.0:9000",  # All interfaces
+    "ws://0.0.0.0:9000",  # All interfaces WebSocket
+]
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
-)  # fmt: skip
+    expose_headers=["*"],  # Add this to expose headers
+    allow_origin_regex=None,  # You can add regex pattern if needed
+    max_age=3600,  # Cache preflight requests for 1 hour
+)
 # app.add_middleware(ApiHTTPMiddleware)
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -154,3 +146,15 @@ async def server_shutdown():
 # if __name__ == "__main__":
 #     print("fastapi.main")
 #     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True, debug=True, workers=3, log_config="log.yaml")
+
+if __name__ == "__main__":
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=9090,
+        reload=True,
+        ws_ping_interval=20,  # Keep WebSocket connection alive
+        ws_ping_timeout=20,  # WebSocket timeout
+        timeout_keep_alive=65,  # Keep-alive timeout
+        log_config="log.yaml",
+    )
